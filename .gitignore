@@ -1,32 +1,41 @@
-# Prerequisites
-*.d
+# build artifacts
+build/
+cmake-build-*/
 
-# Compiled Object files
+# python bindings
+*.so
+*.pyd
+*.dll
+__pycache__/
+*.pyc
+*.pyo
+
+# jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Os
+.DS_Store
+Thumbs.db
+
+# editor
+.vscode/
+.idea/
+
+# cpp compilation
+*.d
 *.slo
 *.lo
 *.o
 *.obj
-
-# Precompiled Headers
 *.gch
 *.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
 *.mod
 *.smod
-
-# Compiled Static libraries
 *.lai
 *.la
 *.a
 *.lib
-
-# Executables
+*.dylib
 *.exe
 *.out
 *.app
