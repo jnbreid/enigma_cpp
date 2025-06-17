@@ -11,7 +11,8 @@ AlphabetMapper::AlphabetMapper(const std::string& alphabet) {
 }
 
 int AlphabetMapper::charToIndex(char c) const {
-    c = toupper(c);
+    // todo: add conditions for bigger alphabet
+    // c = toupper(c);
     std::unordered_map<char, int>::const_iterator it = char_to_index_.find(c);
     // characters that are not in the alphabet are returned as -1 to ignore them
     if (it == char_to_index_.end())
