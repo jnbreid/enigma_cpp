@@ -11,9 +11,11 @@ AlphabetMapper::AlphabetMapper(const std::string& alphabet) {
 }
 
 int AlphabetMapper::charToIndex(char c) const {
+    c = toupper(c);
     std::unordered_map<char, int>::const_iterator it = char_to_index_.find(c);
+    // characters that are not in the alphabet are returned as -1 to ignore them
     if (it == char_to_index_.end())
-        throw std::invalid_argument(std::string("Char not found: ") + c);
+        return -1;
     return it->second;
 }
 
