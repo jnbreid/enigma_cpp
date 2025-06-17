@@ -2,13 +2,23 @@
 #include "EnigmaMachine.h"
 
 EnigmaMachine::EnigmaMachine() {
-    // Init logic 
+    // Init rotorassembly, reflector, plugboard
 }
 
 std::string EnigmaMachine::encode(const std::string& input) {
-    return "encoded";  // placeholder
+    std::string output;
+
+    for (char c : input) {
+        int index = alphabetMapper_.charToIndex(c);
+        if (index == 0) continue;
+
+        output += c;
+    }
+
+    return output;  
 }
 
 std::string EnigmaMachine::decode(const std::string& input) {
-    return "decoded";  // placeholder
+    // 
+    return encode(input); 
 }
