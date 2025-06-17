@@ -9,11 +9,12 @@ private:
     std::vector<int> reverseMap_;
     int position_;
     int permutationSize_;
+    int notchPosition_;
 
 public:
-    Rotor(const std::vector<int>& permutation, int startPos);
+    Rotor(const std::vector<int>& permutation, int startPos, int notchPos);
     
     int forwardTransform(int input);
     int reverseTransform(int input);
-    void rotate();
+    bool rotate();
 };

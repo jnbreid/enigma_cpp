@@ -1,8 +1,8 @@
 #include "Rotor.h"
 #include <stdexcept>
 
-Rotor::Rotor(const std::vector<int>& permutation, int startPos) 
-    : position_(startPos) {
+Rotor::Rotor(const std::vector<int>& permutation, int startPos, int notchPos) 
+    : position_(startPos),  notchPosition_(notchPos){
     
     permutationSize_ = permutation.size();
 
@@ -23,6 +23,10 @@ int Rotor::reverseTransform(int input) {
     return reverseMap_[index];
 }
 
-void Rotor::rotate() {
+bool Rotor::rotate() {
     position_ = (position_ + 1) % permutationSize_;
+    if (position_ == notchPosition_){
+        return true;
+    }
+    return false;
 }
