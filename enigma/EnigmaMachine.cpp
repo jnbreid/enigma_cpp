@@ -12,6 +12,14 @@ std::string EnigmaMachine::encode(const std::string& input) {
         int index = alphabetMapper_.charToIndex(c);
         if (index == 0) continue;
 
+        c = plugboard_.swap(c);
+        c = rotorassembly_.forwardTransform(c);
+        c = reflector_.reflect(c);
+        c = rotorassembly_.backwardTransform(c);
+        c = plugboard_.swap(c);
+
+        rotorassembly_.rotateRotors();
+
         output += c;
     }
 
@@ -19,6 +27,6 @@ std::string EnigmaMachine::encode(const std::string& input) {
 }
 
 std::string EnigmaMachine::decode(const std::string& input) {
-    // 
+    // decoding follows same process
     return encode(input); 
 }
