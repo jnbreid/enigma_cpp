@@ -50,3 +50,23 @@ Rotor loadRotorFromAlphabetString(const std::string& wiringString, const int rot
 
     return Rotor(permutation, rotorPosition, notchPosition);
 }
+
+
+Reflector loadReflectorFromalphabetString(const std::string& wiringString, const AlphabetMapper& mapper) {
+    if (static_cast<int>(wiringString.size()) != mapper.size()) {
+        throw std::invalid_argument("Wiring string size must match alphabet size.");
+    }
+
+    std::vector<int> permutation;
+    permutation.reserve(mapper.size());
+
+    for (char c : wiringString) {
+        int index = mapper.charToIndex(c);
+        if (index == -1) {
+            throw std::invalid_argument("Invalid character found in wiring string.");
+        }
+        permutation.push_back(index);
+    }
+
+    return Reflector(permutation);
+}

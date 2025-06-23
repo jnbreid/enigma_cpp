@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include "Rotor.h"
+#include "Reflector.h"
 
 // class to map the used alphabet to integers that are used internally in the 
 // enigma machine. (simulation of human pressing a letter in keyboard)
@@ -20,3 +21,4 @@ private:
 };
 
 Rotor loadRotorFromAlphabetString(const std::string& wiringString, const int rotorPosition, const int notchPos, const AlphabetMapper& mapper);
+Reflector loadReflectorFromalphabetString(const std::string& wiringString, const AlphabetMapper& mapper);
