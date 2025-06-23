@@ -19,5 +19,5 @@ public:
     int reverseTransform(int input);
     bool rotate();
     void resetRotorPosition();
-    void setRotorPosition();
+    void setRotorPosition(int position);
 };

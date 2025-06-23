@@ -29,3 +29,24 @@ char AlphabetMapper::indexToChar(int i) const {
 int AlphabetMapper::size() const {
     return static_cast<int>(index_to_char_.size());
 }
+
+Rotor loadRotorFromAlphabetString(const std::string& wiringString, const int rotorPosition, const char notchPos, const AlphabetMapper& mapper) {
+    if (static_cast<int>(wiringString.size()) != mapper.size()) {
+        throw std::invalid_argument("Wiring string size must match alphabet size.");
+    }
+
+    std::vector<int> permutation;
+    permutation.reserve(mapper.size());
+
+    for (char c : wiringString) {
+        int index = mapper.charToIndex(c);
+        if (index == -1) {
+            throw std::invalid_argument("Invalid character found in wiring string.");
+        }
+        permutation.push_back(index);
+    }
+
+    int notchPosition = mapper.charToIndex(notchPos);
+
+    return Rotor(permutation, rotorPosition, notchPosition);
+}

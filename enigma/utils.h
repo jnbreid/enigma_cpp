@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <vector>
 #include <string>
+#include "Rotor.h"
 
 // class to map the used alphabet to integers that are used internally in the 
 // enigma machine. (simulation of human pressing a letter in keyboard)
@@ -18,4 +19,4 @@ private:
     std::vector<char> index_to_char_;
 };
 
-std::vector<int> loadRotorFromAlphabetString(const std::string& wiringString, const AlphabetMapper& mapper);
+Rotor loadRotorFromAlphabetString(const std::string& wiringString, const int rotorPosition, const int notchPos, const AlphabetMapper& mapper);
