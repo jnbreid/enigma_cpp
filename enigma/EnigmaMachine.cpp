@@ -1,8 +1,23 @@
 
 #include "EnigmaMachine.h"
 
-EnigmaMachine::EnigmaMachine() {
-    // Init rotorassembly, reflector, plugboard
+EnigmaMachine::EnigmaMachine() : alphabetMapper_("ABCDEFGHIJKLMNOPQRSTUVWXYZ") {
+    using namespace RotorPresets;
+    using namespace ReflectorPresets;
+
+    const auto& r1 = STANDARD_ROTORS.at("I");
+    const auto& r2 = STANDARD_ROTORS.at("II");
+    const auto& r3 = STANDARD_ROTORS.at("III");
+
+    Rotor rotor1 = loadRotorFromAlphabetString(r1.wiring, 0, r1.notch, alphabetMapper_);
+    Rotor rotor2 = loadRotorFromAlphabetString(r2.wiring, 0, r2.notch, alphabetMapper_);
+    Rotor rotor3 = loadRotorFromAlphabetString(r3.wiring, 0, r3.notch, alphabetMapper_);
+
+    rotorassembly_ = RotorAssembly({rotor1, rotor2, rotor3});
+
+    std::string reflectorString = STANDARD_REFLECTORS.at("B");
+
+    reflector_ = loadReflectorFromalphabetString(reflectorString, alphabetMapper_);
 }
 
 std::string EnigmaMachine::encode(const std::string& input) {
@@ -10,7 +25,7 @@ std::string EnigmaMachine::encode(const std::string& input) {
 
     for (char c : input) {
         int index = alphabetMapper_.charToIndex(c);
-        if (index == 0) continue;
+        if (index == -1) continue;
 
         c = plugboard_.swap(c);
         c = rotorassembly_.forwardTransform(c);
