@@ -17,3 +17,5 @@ private:
     std::unordered_map<char, int> char_to_index_;
     std::vector<char> index_to_char_;
 };
+
+std::vector<int> loadRotorFromAlphabetString(const std::string& wiringString, const AlphabetMapper& mapper);

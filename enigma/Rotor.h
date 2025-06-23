@@ -7,6 +7,7 @@ class Rotor {
 private:
     std::vector<int> forwardMap_;
     std::vector<int> reverseMap_;
+    int initial_position_;
     int position_;
     int permutationSize_;
     int notchPosition_;
@@ -17,4 +18,6 @@ public:
     int forwardTransform(int input);
     int reverseTransform(int input);
     bool rotate();
+    void resetRotorPosition();
+    void setRotorPosition();
 };
