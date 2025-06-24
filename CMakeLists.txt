@@ -1,4 +1,4 @@
-# Copyright (c) 2025 Your Name
+# Copyright (c) 2025 Jon Breid
 # SPDX-License-Identifier: MIT
 
 project(enigma)
