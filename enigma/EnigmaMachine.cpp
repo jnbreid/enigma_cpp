@@ -1,5 +1,7 @@
 
 #include "EnigmaMachine.h"
+#include "presets/RotorPresets.h"
+#include "presets/ReflectorPresets.h"
 
 EnigmaMachine::EnigmaMachine() : alphabetMapper_("ABCDEFGHIJKLMNOPQRSTUVWXYZ") {
     using namespace RotorPresets;
@@ -18,6 +20,9 @@ EnigmaMachine::EnigmaMachine() : alphabetMapper_("ABCDEFGHIJKLMNOPQRSTUVWXYZ") {
     std::string reflectorString = STANDARD_REFLECTORS.at("B");
 
     reflector_ = loadReflectorFromalphabetString(reflectorString, alphabetMapper_);
+
+    std::string plug = "AB CD EF";
+    plugboard_ = loadPlugboardFromString(plug, alphabetMapper_);
 }
 
 std::string EnigmaMachine::encode(const std::string& input) {
@@ -44,4 +49,8 @@ std::string EnigmaMachine::encode(const std::string& input) {
 std::string EnigmaMachine::decode(const std::string& input) {
     // decoding follows same process
     return encode(input); 
+}
+
+void EnigmaMachine::setPlugboard(const std::string& plug) {
+    plugboard_ = loadPlugboardFromString(plug, alphabetMapper_);
 }
