@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Your Name
+# SPDX-License-Identifier: MIT
+
 project(enigma)
 
 find_package(pybind11 CONFIG REQUIRED)
