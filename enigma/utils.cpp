@@ -53,7 +53,7 @@ Rotor loadRotorFromAlphabetString(const std::string& wiringString, const int rot
 }
 
 
-Reflector loadReflectorFromalphabetString(const std::string& wiringString, const AlphabetMapper& mapper) {
+Reflector loadReflectorFromAlphabetString(const std::string& wiringString, const AlphabetMapper& mapper) {
     if (static_cast<int>(wiringString.size()) != mapper.size()) {
         throw std::invalid_argument("Wiring string size must match alphabet size.");
     }

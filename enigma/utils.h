@@ -21,9 +21,9 @@ private:
     std::vector<char> index_to_char_;
 };
 
-Rotor loadRotorFromAlphabetString(const std::string& wiringString, const int rotorPosition, const int notchPos, const AlphabetMapper& mapper);
+Rotor loadRotorFromAlphabetString(const std::string& wiringString, const int rotorPosition, const char notchPos, const AlphabetMapper& mapper);
 
-Reflector loadReflectorFromalphabetString(const std::string& wiringString, const AlphabetMapper& mapper);
+Reflector loadReflectorFromAlphabetString(const std::string& wiringString, const AlphabetMapper& mapper);
 
 Plugboard loadPlugboardFromPairs(const std::vector<std::pair<char, char>>& pairs, const AlphabetMapper& mapper);
 

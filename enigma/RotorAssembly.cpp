@@ -3,6 +3,8 @@
 
 RotorAssembly::RotorAssembly(const std::vector<Rotor>& rotors) : rotors_(rotors) {}
 
+RotorAssembly::RotorAssembly() {}
+
 int RotorAssembly::forwardTransform(int input) {
     for (int i = 0; i < rotors_.size(); i++) {
         input = rotors_[i].forwardTransform(input);

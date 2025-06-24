@@ -2,28 +2,26 @@
 #include "EnigmaMachine.h"
 #include "presets/RotorPresets.h"
 #include "presets/ReflectorPresets.h"
+#include "utils.h"
+#include "RotorAssembly.h"
+#include "Reflector.h"
+#include "Plugboard.h"
 
-EnigmaMachine::EnigmaMachine() : alphabetMapper_("ABCDEFGHIJKLMNOPQRSTUVWXYZ") {
-    using namespace RotorPresets;
-    using namespace ReflectorPresets;
-
-    const auto& r1 = STANDARD_ROTORS.at("I");
-    const auto& r2 = STANDARD_ROTORS.at("II");
-    const auto& r3 = STANDARD_ROTORS.at("III");
-
-    Rotor rotor1 = loadRotorFromAlphabetString(r1.wiring, 0, r1.notch, alphabetMapper_);
-    Rotor rotor2 = loadRotorFromAlphabetString(r2.wiring, 0, r2.notch, alphabetMapper_);
-    Rotor rotor3 = loadRotorFromAlphabetString(r3.wiring, 0, r3.notch, alphabetMapper_);
-
-    rotorassembly_ = RotorAssembly({rotor1, rotor2, rotor3});
-
-    std::string reflectorString = STANDARD_REFLECTORS.at("B");
-
-    reflector_ = loadReflectorFromalphabetString(reflectorString, alphabetMapper_);
-
-    std::string plug = "AB CD EF";
-    plugboard_ = loadPlugboardFromString(plug, alphabetMapper_);
+EnigmaMachine::EnigmaMachine()
+    : alphabetMapper_("ABCDEFGHIJKLMNOPQRSTUVWXYZ"),
+      rotorassembly_({
+          loadRotorFromAlphabetString(RotorPresets::STANDARD_ROTORS.at("I").wiring, 0,
+                                      RotorPresets::STANDARD_ROTORS.at("I").notch, alphabetMapper_),
+          loadRotorFromAlphabetString(RotorPresets::STANDARD_ROTORS.at("II").wiring, 0,
+                                      RotorPresets::STANDARD_ROTORS.at("II").notch, alphabetMapper_),
+          loadRotorFromAlphabetString(RotorPresets::STANDARD_ROTORS.at("III").wiring, 0,
+                                      RotorPresets::STANDARD_ROTORS.at("III").notch, alphabetMapper_)
+      }),
+      reflector_(loadReflectorFromAlphabetString(ReflectorPresets::STANDARD_REFLECTORS.at("B"), alphabetMapper_)),
+      plugboard_(loadPlugboardFromString("AB CD EF", alphabetMapper_)) {
+    
 }
+
 
 std::string EnigmaMachine::encode(const std::string& input) {
     std::string output;

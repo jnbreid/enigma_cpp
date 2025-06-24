@@ -11,6 +11,8 @@ class EnigmaMachine {
         std::string encode(const std::string& input);
         std::string decode(const std::string& input);
 
+        void setPlugboard(const std::string& plug);
+
     private:
         AlphabetMapper alphabetMapper_;
         RotorAssembly rotorassembly_;

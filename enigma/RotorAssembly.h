@@ -8,6 +8,7 @@ private:
 
 public:
     RotorAssembly(const std::vector<Rotor>& rotors);
+    RotorAssembly();
 
     int forwardTransform(int input);
     int backwardTransform(int input);
