@@ -1,5 +1,6 @@
 #pragma once
 #include "Rotor.h"
+
 #include <vector>
 
 class RotorAssembly {

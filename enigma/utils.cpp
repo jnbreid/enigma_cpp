@@ -1,5 +1,6 @@
 
 #include "utils.h"
+
 #include <stdexcept>
 #include <sstream>
 
@@ -22,17 +23,17 @@ int AlphabetMapper::charToIndex(char c) const {
 }
 
 char AlphabetMapper::indexToChar(int i) const {
-    if (i < 0 || i >= static_cast<int>(index_to_char_.size()))
-        throw std::out_of_range("Index out of range");
+    if (i < 0 || i >= index_to_char_.size())
+        throw std::out_of_range("Index out of range: " + std::to_string(i));
     return index_to_char_[i];
 }
 
 int AlphabetMapper::size() const {
-    return static_cast<int>(index_to_char_.size());
+    return index_to_char_.size();
 }
 
 Rotor loadRotorFromAlphabetString(const std::string& wiringString, const int rotorPosition, const char notchPos, const AlphabetMapper& mapper) {
-    if (static_cast<int>(wiringString.size()) != mapper.size()) {
+    if (wiringString.size() != mapper.size()) {
         throw std::invalid_argument("Wiring string size must match alphabet size.");
     }
 

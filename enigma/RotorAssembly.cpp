@@ -1,5 +1,6 @@
 
 #include "RotorAssembly.h"
+
 #include <string>
 #include <stdexcept>
 

@@ -7,8 +7,9 @@
 #include "utils.h"
 #include "Reflector.h"
 #include "Plugboard.h"
-#include <stdexcept>
 
+#include <stdexcept>
+#include <string>
 
 EnigmaMachine::EnigmaMachine()
     : alphabetMapper_("ABCDEFGHIJKLMNOPQRSTUVWXYZ"),
@@ -50,7 +51,7 @@ std::string EnigmaMachine::encode(const std::string& input) {
         index = reflector_.reflect(index);
         index = rotorassembly_.backwardTransform(index);
         index = plugboard_.swap(index);
-
+    
         rotorassembly_.rotateRotors();
 
         output += alphabetMapper_.indexToChar(index);
@@ -97,7 +98,7 @@ void EnigmaMachine::setRotors(const std::vector<std::string>& names,
 }
 
 void EnigmaMachine::setCustomRotors(const std::vector<std::string>& wirings,
-                                    const std::vector<int>& notchPositions,
+                                    const std::vector<char>& notchPositions,
                                     const std::vector<int>& startPositions) {
     if (wirings.size() != notchPositions.size() || wirings.size() != startPositions.size()) {
         throw std::invalid_argument("Wiring, notch, and start position lists must be the same size.");
@@ -116,6 +117,7 @@ void EnigmaMachine::setCustomRotors(const std::vector<std::string>& wirings,
 
 void EnigmaMachine::setCustomAlphabet(const std::string& alphabet) {
     alphabetMapper_ = AlphabetMapper(alphabet);
+    plugboard_ = loadPlugboardFromString("", alphabetMapper_);
 }
 
 void EnigmaMachine::setRotorPositions(const std::vector<int>& positions) {

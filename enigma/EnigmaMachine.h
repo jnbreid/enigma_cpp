@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+
 #include "RotorAssembly.h"
 #include "Reflector.h"
 #include "Plugboard.h"
@@ -17,7 +18,7 @@ class EnigmaMachine {
                        const std::vector<int>& positions);
         void setRotorPositions(const std::vector<int>& positions);
         void setCustomRotors(const std::vector<std::string>& wirings,
-                        const std::vector<int>& notchPositions,
+                        const std::vector<char>& notchPositions,
                         const std::vector<int>& startPositions);
         void setCustomAlphabet(const std::string& alphabet);
 

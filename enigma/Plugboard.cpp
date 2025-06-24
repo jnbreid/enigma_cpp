@@ -8,5 +8,8 @@ Plugboard::Plugboard(const std::vector<int>& connections)
 Plugboard::Plugboard() {}
 
 int Plugboard::swap(int input) const {
+
+    
+    
     return permutation_[input];
 }
