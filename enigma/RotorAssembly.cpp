@@ -13,8 +13,8 @@ int RotorAssembly::forwardTransform(int input) {
 }
 
 int RotorAssembly::backwardTransform(int input) {
-    for (int i = rotors_.size(); i >= 0; i--) {
-        input = rotors_[i].reverseTransform(input);
+    for (int i = 0; i < rotors_.size(); i++) {
+        input = rotors_[rotors_.size()-1-i].reverseTransform(input);
     }
     return input;
 }
@@ -25,5 +25,11 @@ void RotorAssembly::rotateRotors() {
         if (rotateNext) {
             rotor.rotate();
         }
+    }
+}
+
+void RotorAssembly::resetRotors() {
+    for (int i = 0; i < rotors_.size(); i++) {
+        rotors_[i].resetRotorPosition();
     }
 }

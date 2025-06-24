@@ -18,4 +18,6 @@ class EnigmaMachine {
         RotorAssembly rotorassembly_;
         Reflector reflector_;
         Plugboard plugboard_;
+
+        void setup();
 };

@@ -13,4 +13,5 @@ public:
     int forwardTransform(int input);
     int backwardTransform(int input);
     void rotateRotors();
+    void resetRotors();
 };

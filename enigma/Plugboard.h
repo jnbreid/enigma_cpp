@@ -3,7 +3,9 @@
 
 class Plugboard {
 public:
-Plugboard(const std::vector<int>& connections);
+    Plugboard(const std::vector<int>& connections);
+
+    Plugboard();
 
     int swap(int input) const;  
 

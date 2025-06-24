@@ -4,6 +4,7 @@
 class Reflector {
 public:
     Reflector(const std::vector<int>& wiring);
+    Reflector();
 
     int reflect(int input) const;  
 

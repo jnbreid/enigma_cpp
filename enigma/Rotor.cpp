@@ -1,10 +1,12 @@
 #include "Rotor.h"
-#include <stdexcept>
 
 Rotor::Rotor(const std::vector<int>& permutation, int startPos, int notchPos) 
     : position_(startPos),  notchPosition_(notchPos), initial_position_(startPos) {
     
     permutationSize_ = permutation.size();
+
+    forwardMap_.resize(permutationSize_);
+    reverseMap_.resize(permutationSize_);
 
     for (int i = 0; i < permutation.size(); ++i) {
         forwardMap_[permutation[i]] = i;
@@ -13,14 +15,16 @@ Rotor::Rotor(const std::vector<int>& permutation, int startPos, int notchPos)
 }
 
 int Rotor::forwardTransform(int input) {
-    // simulating rotation by addint rotation index (position_)
+    // simulating rotation by addint rotation index befor map and removing it after (position_)
     int index = (input + position_) % permutationSize_;
-    return forwardMap_[index];
+    index = forwardMap_[index];
+    return (index - position_ + permutationSize_) % permutationSize_;
 }
 
 int Rotor::reverseTransform(int input) {
     int index = (input + position_) % permutationSize_;
-    return reverseMap_[index];
+    index = reverseMap_[index];
+    return (index - position_ + permutationSize_) % permutationSize_;
 }
 
 bool Rotor::rotate() {
