@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2025 Jon Breid
 
 #include "EnigmaMachine.h"
 #include "presets/RotorPresets.h"

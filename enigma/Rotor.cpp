@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2025 Jon Breid
+
 #include "Rotor.h"
 
 Rotor::Rotor(const std::vector<int>& permutation, int startPos, int notchPos) 
