@@ -15,6 +15,7 @@ class EnigmaMachine {
         void setReflector(const std::string& wiring);
         void setRotors(const std::vector<std::string>& names, 
                        const std::vector<int>& positions);
+        void setRotorPositions(const std::vector<int>& positions);
         void setCustomRotors(const std::vector<std::string>& wirings,
                         const std::vector<int>& notchPositions,
                         const std::vector<int>& startPositions);

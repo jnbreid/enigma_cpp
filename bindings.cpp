@@ -13,5 +13,6 @@ PYBIND11_MODULE(enigma, m) {
         .def("set_reflector", &EnigmaMachine::setReflector)
         .def("set_rotors", &EnigmaMachine::setRotors)
         .def("set_custom_rotors", &EnigmaMachine::setCustomRotors)
-        .def("set_custom_alphabet", &EnigmaMachine::setCustomAlphabet);
+        .def("set_custom_alphabet", &EnigmaMachine::setCustomAlphabet)
+        .def("set_rotor_positions", &EnigmaMachine::setRotorPositions);
 }

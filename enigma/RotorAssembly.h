@@ -14,4 +14,5 @@ public:
     int backwardTransform(int input);
     void rotateRotors();
     void resetRotors();
+    void setRotorPositions(const std::vector<int>& positions);
 };

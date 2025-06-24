@@ -1,6 +1,7 @@
 
 #include "RotorAssembly.h"
 #include <string>
+#include <stdexcept>
 
 RotorAssembly::RotorAssembly(const std::vector<Rotor>& rotors) : rotors_(rotors) {}
 
@@ -32,5 +33,15 @@ void RotorAssembly::rotateRotors() {
 void RotorAssembly::resetRotors() {
     for (int i = 0; i < rotors_.size(); i++) {
         rotors_[i].resetRotorPosition();
+    }
+}
+
+void RotorAssembly::setRotorPositions(const std::vector<int>& positions) {
+    if (positions.size() != rotors_.size()) {
+        throw std::invalid_argument("Number of positions must be identical to number of rotors.");
+    }
+    
+    for (int i = 0; i < rotors_.size(); i++) {
+        rotors_[i].setRotorPosition(positions[i]);
     }
 }

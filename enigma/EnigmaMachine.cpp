@@ -60,7 +60,7 @@ std::string EnigmaMachine::encode(const std::string& input) {
 }
 
 std::string EnigmaMachine::decode(const std::string& input) {
-    // decoding follows same process
+    // decoding follows same process as encoding
     return encode(input); 
 }
 
@@ -116,4 +116,8 @@ void EnigmaMachine::setCustomRotors(const std::vector<std::string>& wirings,
 
 void EnigmaMachine::setCustomAlphabet(const std::string& alphabet) {
     alphabetMapper_ = AlphabetMapper(alphabet);
+}
+
+void EnigmaMachine::setRotorPositions(const std::vector<int>& positions) {
+    rotorassembly_.setRotorPositions(positions);
 }
