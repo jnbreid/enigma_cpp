@@ -1,5 +1,6 @@
 
 #include "RotorAssembly.h"
+#include <string>
 
 RotorAssembly::RotorAssembly(const std::vector<Rotor>& rotors) : rotors_(rotors) {}
 

@@ -7,6 +7,7 @@
 #include "utils.h"
 #include "Reflector.h"
 #include "Plugboard.h"
+#include <stdexcept>
 
 
 EnigmaMachine::EnigmaMachine()
@@ -65,4 +66,54 @@ std::string EnigmaMachine::decode(const std::string& input) {
 
 void EnigmaMachine::setPlugboard(const std::string& plug) {
     plugboard_ = loadPlugboardFromString(plug, alphabetMapper_);
+}
+
+void EnigmaMachine::setReflector(const std::string& wiring) {
+    if (wiring == "B" || wiring == "C") {
+        reflector_ = loadReflectorFromAlphabetString(
+            ReflectorPresets::STANDARD_REFLECTORS.at(wiring),
+            alphabetMapper_);
+    } else {
+        reflector_ = loadReflectorFromAlphabetString(wiring, alphabetMapper_);
+    }
+}
+
+void EnigmaMachine::setRotors(const std::vector<std::string>& names, 
+                              const std::vector<int>& positions) {
+    if (names.size() != positions.size()) {
+        throw std::invalid_argument("Names and positions must match.");
+    }
+
+    std::vector<Rotor> rotors;
+
+    for (int i = 0; i < names.size(); i++) {
+        const auto& preset = RotorPresets::STANDARD_ROTORS.at(names[i]);
+        rotors.emplace_back(
+            loadRotorFromAlphabetString(preset.wiring, positions[i], preset.notch, alphabetMapper_)
+        );
+    }
+
+    rotorassembly_ = RotorAssembly(rotors);
+}
+
+void EnigmaMachine::setCustomRotors(const std::vector<std::string>& wirings,
+                                    const std::vector<int>& notchPositions,
+                                    const std::vector<int>& startPositions) {
+    if (wirings.size() != notchPositions.size() || wirings.size() != startPositions.size()) {
+        throw std::invalid_argument("Wiring, notch, and start position lists must be the same size.");
+    }
+
+    std::vector<Rotor> rotors;
+
+    for (int i = 0; i < wirings.size(); i++) {
+        rotors.emplace_back(
+            loadRotorFromAlphabetString(wirings[i], startPositions[i], notchPositions[i], alphabetMapper_)
+        );
+    }
+
+    rotorassembly_ = RotorAssembly(rotors);
+}
+
+void EnigmaMachine::setCustomAlphabet(const std::string& alphabet) {
+    alphabetMapper_ = AlphabetMapper(alphabet);
 }

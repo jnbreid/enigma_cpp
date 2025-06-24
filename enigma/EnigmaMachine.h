@@ -12,6 +12,13 @@ class EnigmaMachine {
         std::string decode(const std::string& input);
 
         void setPlugboard(const std::string& plug);
+        void setReflector(const std::string& wiring);
+        void setRotors(const std::vector<std::string>& names, 
+                       const std::vector<int>& positions);
+        void setCustomRotors(const std::vector<std::string>& wirings,
+                        const std::vector<int>& notchPositions,
+                        const std::vector<int>& startPositions);
+        void setCustomAlphabet(const std::string& alphabet);
 
     private:
         AlphabetMapper alphabetMapper_;
