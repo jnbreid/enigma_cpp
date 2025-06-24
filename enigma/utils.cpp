@@ -70,3 +70,22 @@ Reflector loadReflectorFromalphabetString(const std::string& wiringString, const
 
     return Reflector(permutation);
 }
+
+Plugboard loadPlugboardFromPairs(const std::vector<std::pair<char, char>>& pairs, const AlphabetMapper& mapper) {
+    int size = mapper.size();
+    std::vector<int> permutation(size);
+
+    for (int i = 0; i < size; i++) {
+        permutation[i] = i;
+    }
+
+    for (const auto& pair: pairs) {
+        int x = mapper.charToIndex(pair.first);
+        int y = mapper.charToIndex(pair.second);
+
+        permutation[x] = y;
+        permutation[y] = x;
+    }
+
+    return Plugboard(permutation);
+}
