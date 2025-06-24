@@ -26,3 +26,5 @@ Rotor loadRotorFromAlphabetString(const std::string& wiringString, const int rot
 Reflector loadReflectorFromalphabetString(const std::string& wiringString, const AlphabetMapper& mapper);
 
 Plugboard loadPlugboardFromPairs(const std::vector<std::pair<char, char>>& pairs, const AlphabetMapper& mapper);
+
+Plugboard loadPlugboardFromString(const std::string& connections, const AlphabetMapper& mapper);

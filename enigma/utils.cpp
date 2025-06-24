@@ -1,6 +1,7 @@
 
 #include "utils.h"
 #include <stdexcept>
+#include <sstream>
 
 AlphabetMapper::AlphabetMapper(const std::string& alphabet) {
     for (int i = 0; i < static_cast<int>(alphabet.size()); ++i) {
@@ -88,4 +89,23 @@ Plugboard loadPlugboardFromPairs(const std::vector<std::pair<char, char>>& pairs
     }
 
     return Plugboard(permutation);
+}
+
+Plugboard loadPlugboardFromString(const std::string& connections, const AlphabetMapper& mapper) {
+    std::vector<std::pair<char, char>> pairs;
+
+    std::istringstream stream(connections);
+    std::string token;
+
+    while (stream >> token) {
+        if (token.size() !=2) {
+            throw std::invalid_argument("Each switch must contain a pair of letters.");
+        }
+
+        char x = token[0];
+        char y = token[1];
+        pairs.emplace_back(x,y);
+    }
+
+    return loadPlugboardFromPairs(pairs, mapper);
 }
