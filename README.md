@@ -19,7 +19,7 @@ Unlike the original, this version supports **fully customizable rotors, reflecto
 
 ## Installation
 
-Make sure you have CMake and Pybind11 installed. Then build the module:
+Make sure you have CMake and Pybind11 installed. Then, build the module by running:
 
 ```bash
 mkdir build && cd build
@@ -27,7 +27,7 @@ cmake ..
 make
 ```
 
-### Demo
+## Demo
 
 Check out [*demo.ipynb*](demo.ipynb) for an interactive walkthrough and showcase of functionalities.
 
