@@ -8,9 +8,6 @@ Unlike the original, this version supports **fully customizable rotors, reflecto
 - Fully customizable rotors, reflectors, and plugboards  
   Supports arbitrary character sets, including all printable ASCII characters.
 
-- Flexible rotor stepping mechanism  
-  Supports any number of rotors with notch-based stepping logic.
-
 - Python integration via Pybind11  
   Enables interactive use from Python scripts or Jupyter notebooks.
 
